@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <link rel="stylesheet" href="css/jquery.mobile-1.0a3.css"  media="screen" title="jquery mobile" charset="utf-8">
+  <link rel="stylesheet" href="css/main.css"  media="screen" charset="utf-8">
+    
+</head>
+<body>
+  <!--
+  Home Page
+  -->
+  <div id="home" data-role="page">
+    <div data-role="header">
+      <h1 style="">تقرعيجة</h1>
+     
+      </a>
+    </div>
+    
+    <div data-role="content">
+      <a href="#new" data-rel="dialog" data-transition="pop" data-role="button" data-icon="plus" data-theme="b">
+        كاش جديد؟
+      </a>
+      
+      <ul data-role="listview" data-inset="true">
+        <li><a href="#all">تقرعيج قديم</a></li>
+        <li><a href="#nearest">الخريطة </a></li>
+      </ul>
+    </div>
+    
+  </div>
+  
+  <!--
+  New Note Form
+  -->
+  <div id="new" data-role="page">
+    <div data-role="header">
+      <h1>كاش جديد ؟</h1>
+    </div>
+    
+    <div data-role="content">
+      <form action="#" method="post">
+        <div data-role="fieldcontain">
+          <label for="title">واش كاين ؟</label>
+          <input id="title" name="title" value="">
+        </div>
+        
+        <div data-role="fieldcontain">
+          <label for="body">أحكي </label>
+          <textarea id="body" name="body" ></textarea>
+        </div>
+        
+        <div data-role="fieldcontain">
+          <label for="locate">لبلاصة</label>
+          <select id="locate" name="locate" data-role="slider">
+            <option value="no">لا</option>
+            <option value="yes">آه</option>
+          </select>
+        </div>
+        
+        <button data-icon="check" data-theme="b">قرعج</button>
+      </form>
+    </div>
+    
+  </div>
+  
+  <!--
+  List of Notes (Alphabetical)
+  -->
+  <div id="all" data-role="page">
+    
+    <div data-role="header">
+      <a href="#home" data-role="button"  data-icon="arrow-l" data-rel="back">
+        ارجع
+      </a>
+      <h1>قديم</h1>
+    </div>
+    
+    <div data-role="content">
+      <ul data-role="listview" id="all_notes">
+      </ul>
+    </div>
+  </div>
+  
+  <!--
+  Nearest Notes
+  -->
+  <div id="nearest" data-role="page">
+    
+    <div data-role="header">
+      <a href="#home" data-role="button"  data-icon="arrow-l" data-rel="back">
+        ارجع
+      </a>
+      <h1>الخريطة</h1>
+      <a href="#" class="locate" data-role="button"  data-icon="refresh" class="ui-btn-right" data-theme="e">
+        ماشي بعيد
+      </a>
+    </div>
+    
+    <div data-role="content">
+      <ul data-role="listview" id="nearest_notes">
+      </ul>
+    </div>
+  </div>
+  
+  
+  <!--
+  List of Note detail pages
+  -->
+  <div id="note-detail-list">
+  </div>
+  
+<!--JAVASCRIPT-->
+  <script type="text/template" id="note-list-item-template">
+    <a href="#note_<%= note.id %>" >
+      <%= note.get('title') %>
+      (<%= note.distanceFromCurrent() %>)
+    </a>
+  </script>
+  
+  <script type="text/template" id="note-detail-template">
+    <div data-role="header">
+      <a href="#home" data-role="button"  data-icon="arrow-l" data-rel="back">  
+        ارجع
+      </a>
+      <h1><%= note.get('title') %></h1>
+    </div>
+    <div data-role="content">
+      <%= note.get('body') %>
+      
+      <% if(note.isGeoTagged()){ %>
+        <h3>Location</h3>
+        <img class="map" src="<%= note.mapImageUrl() %>">
+        [<%= note.get('latitude')%>, <%= note.get('longitude')%>]
+      <% } /*end if*/ %>
+    </div>
+  </script>
+  
+  <script src="js/jquery-1.5.1.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/underscore.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/backbone.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/backbone.localStorage.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/application.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.mobile-1.0a3.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
+
+
+
+
