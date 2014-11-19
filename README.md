@@ -7,8 +7,8 @@ Based on @khaled777b JQuery mobile Workshop in CLS ANNABA - 2014
 
 "تقرعيجة" تطبيق صغير لمشاركة آخر الأخبار ، المعلومات و المزيد....
 
-<br>استنادا الى ورشة عمل 
-@khaled777b 
+استنادا الى ورشة عمل 
+<br>@khaled777b 
 <br>حول  
 JQuery mobile  
 في  مركز الترفيه العلمي عنابة 2014
